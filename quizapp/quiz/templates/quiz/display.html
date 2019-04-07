@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Questions</h1>
+    {% for key, value in context.items %}
+    <tr>
+        <td><h2>{{ key }}</h2>  </td><br>
+        <td><h2>{{ value }}</h2>  </td>
+        <br>
+    </tr>
+    {% endfor %}
+</body>
+
+</html>

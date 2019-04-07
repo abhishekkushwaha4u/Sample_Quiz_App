@@ -1,0 +1,14 @@
+h1{
+    color: rgb(163, 24, 129);
+}
+
+body {
+    height: 100vh;
+    background: linear-gradient(to bottom right, pink, rgb(87, 50, 56)) no-repeat;
+    background-size: 100% 100%;
+    text-align: center;
+}
+
+img{
+    margin: 0 auto;
+}
