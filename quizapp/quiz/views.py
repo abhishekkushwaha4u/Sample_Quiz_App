@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse,HttpRequest
 from .models import Question
 from django.views.decorators.csrf import csrf_exempt
 
@@ -41,21 +41,30 @@ def add_new_question(request):
         new_question = Question(question=question, answer=answer, question_number=qno)
         new_question.save()
         return HttpResponse("Success")
-
+@csrf_exempt
 def answer_question(request):
     question = Question.objects.all()
     print(question)
     context = {}
     #k=Question.objects.get(question_number=2)
     print(" sample output ")
-    print(k)
+    #print(k)
 
     for q in question:
-        if q.question_number == 2:
-            context.update({q.question_number: q.question})
-            print(q.question_number)
-            print(q.question)
-            
+    
+        context.update({q.question_number: q.question})
+        #print(q.question_number)
+        #print(q.question)
     print(context)
-    return render(request, "quiz/main_quiz.html",{"context" : context})
+    return render(request, "quiz/main_quiz.html",{"context":context})
+
+@csrf_exempt
+def handle_answer(request):
+    if request.method=="POST":
+        for q in Question.objects.all():
+            print(request.POST.get("answer-given{}".format(q.question_number)))
+        return HttpResponse("success")
+    else:
+        return HttpResponse("fail")
+            
     

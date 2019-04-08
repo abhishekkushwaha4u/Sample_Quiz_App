@@ -7,4 +7,5 @@ urlpatterns = [
     path("display-questions/", views.display_question),
     path("add-new-question/",views.add_new_question),
     path("main_quiz/",views.answer_question),
+    path("answer/", views.handle_answer, name="handle-answer"),
 ]
