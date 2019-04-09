@@ -8,4 +8,5 @@ urlpatterns = [
     path("add-new-question/",views.add_new_question),
     path("main_quiz/",views.answer_question),
     path("answer/", views.handle_answer, name="handle-answer"),
+    path("add-new-multiple-question/",views.add_new_multiple_choice_question),
 ]
