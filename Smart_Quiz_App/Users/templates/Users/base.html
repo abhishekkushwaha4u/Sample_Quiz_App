@@ -10,11 +10,15 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </head>
     <body>
+    
         {% include "Users/includes/navbar.html" %}
-
+        
+        {% include "Users/includes/messages.html" %}
+        <div class="container">
         {% block content  %}
         {% endblock  %}
+        </div>
 
-      <script type="text/javascript" src="js/materialize.min.js"></script>
+      <script type="text/javascript" src="/static/css/materialize/js/materialize.min.js"></script>
     </body>
   </html>
