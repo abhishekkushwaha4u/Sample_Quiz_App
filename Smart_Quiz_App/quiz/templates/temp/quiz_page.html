@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="stylesheet" href="/static/css/style1.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="wclassth=device-wclassth, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Updated Quiz with random questions</title>
+</head>
+
+<body>
+    <form action="/quiz/quiz-answer/" method="POST">
+
+        {% csrf_token %}
+        {% for k in context%}        
+        <div class="parent"><h3>{{k.question_number}})</h3>
+        <h3>{{ k.question }}</h3></div><br>
+        <label class="container" ><h5>A. {{k.a}}</h5>
+            <input type="checkbox" name="A" value={{k.id}}>
+            <span class="checkmark"></span>
+        </label>
+
+        <label class="container" ><h5>B. {{k.b}}</h5>
+            <input type="checkbox" name="B" value={{k.id}}>
+            <span class="checkmark"></span>
+        </label>
+
+        <label class="container" ><h5>C. {{k.c}}</h5>
+            <input type="checkbox" name="C"  value={{k.id}}>
+            <span class="checkmark"></span>
+        </label>
+
+        <label class="container" ><h5>D. {{k.d}}</h5>
+            <input type="checkbox" name="D" value={{k.id}}>
+            <span class="checkmark"></span>
+        </label>
+    
+        {%endfor%}<br>
+        <input type="submit" value="Submit">
+    </form>
+
+</body>
+
+</html>
+

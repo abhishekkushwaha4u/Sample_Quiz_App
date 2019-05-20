@@ -1,0 +1,14 @@
+<head>
+    <title>Random Question Maker </title>
+</head>
+
+<body>
+    <h1>Random Question Post Number </h1>
+    <form method="POST" action='/quiz/quiz/'>
+        {% csrf_token %}
+        No of questions: <input type="text" name="no-of-questions" /><br />
+        <input type="submit" value="Submit" />
+    </form>
+</body>
+
+</html>

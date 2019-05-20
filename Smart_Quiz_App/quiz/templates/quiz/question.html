@@ -1,0 +1,21 @@
+<head>
+    <title>Quiz question maker </title>
+</head>
+
+<body>
+    <h1>Create your question </h1>
+    <form method="POST" action='/quiz/add-questions/'>
+        {% csrf_token %}
+        Question: <input type="text" name="question" /><br />
+        Answer:
+        <input type="text" name="answer" />
+        <br />
+        Option A: <input type="text" name="a" /><br>
+        Option B: <input type="text" name="b" /><br>
+        Option C: <input type="text" name="c" /><br>
+        Option D: <input type="text" name="d" /><br>
+        <input type="submit" value="Submit" />
+    </form>
+</body>
+
+</html>
