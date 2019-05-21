@@ -12,4 +12,8 @@ urlpatterns = [
     #path('answer/', views.answer,name="answer"),
     path('quiz/', views.quiz,name="quiz"),
     path('quiz-answer/', views.customized_response),
+    path('upload/',views.upload,name="upload"),
 ]
+
+
+

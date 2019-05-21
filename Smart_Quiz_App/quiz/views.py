@@ -10,6 +10,7 @@ from .models import multiple_choice
 import random
 from collections import defaultdict
 from django.contrib.auth.decorators import login_required
+from django.core.files.storage import FileSystemStorage
 
 
 
@@ -241,6 +242,21 @@ def customized_response(request):
         count += 1
     return HttpResponse("Done! Your score is "+str(score))
 
+@login_required()
+def upload(request):
+    if request.method=="POST":
+        file = request.FILES["document"]
+        k = file.name.split('.')
+        if file.size > 10000000:
+            return HttpResponse("file size exceeded! Enter less than 10 mb")
+        elif 'csv' not in k:
+            return HttpResponse("only csv file accepted!")
+        else:
+            fs = FileSystemStorage()
+            fs.save(file.name,file)
+            return HttpResponse("File uploaded!")
+    else:
+        return render(request,"quiz/upload.html")
 
 
 
