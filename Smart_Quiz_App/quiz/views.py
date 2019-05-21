@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
+from Users.urls import *
 # from rest_framework.views import APIView
 # from rest_framework.response import Response
 # from rest_framework import status
@@ -55,7 +56,7 @@ def add_question(request):
         new_question.save()
         return HttpResponse("Success")
 
-@login_required(redirect_field_name="Users:login")
+@login_required()
 def quiz_page(request):
     question = multiple_choice.objects.all()
     context = []
@@ -67,6 +68,7 @@ def quiz_page(request):
     return render(request, "quiz/quiz_page.html", {"context": context})
 
 
+@login_required()
 def answer(request):
     if request.method == "POST":
         score = 0
@@ -134,6 +136,7 @@ def answer(request):
         return HttpResponse("Access Restricted!")
 
 
+@login_required()
 def quiz(request):
     if request.method == "GET":
         return render(request, "temp/temporary.html")
@@ -141,11 +144,12 @@ def quiz(request):
         n = int(request.POST.get("no-of-questions"))
         p = len(multiple_choice.objects.all())
         if n > p:
-            return HttpResponse('<html><head><body>Do not have enough questions in database! Enter lesser no of questions!<a href="/quiz/random/">Click here</a></body></head></html>')
+            return HttpResponse('<html><head><body>Do not have enough questions in database! Enter lesser no of questions!<a href="/quiz/quiz/">Click here</a></body></head></html>')
         L = random.sample(range(1, p+1), n)
         return(customized_questions(request, L))
 
 
+@login_required()
 def customized_questions(request, L):
     context = []
     n = 1
@@ -158,6 +162,7 @@ def customized_questions(request, L):
     return render(request, "temp/quiz_page.html", {"context": context})
 
 
+@login_required()
 def customized_response(request):
     print(dict(request.POST))
     L = dict(request.POST)
